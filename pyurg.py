@@ -37,7 +37,7 @@ class UrgDevice(serial.Serial):
     def __del__(self):
         self.laser_off()
 
-    def connect(self, port='COM10', baudrate=115200, timeout=0.1):
+    def connect(self, port='/dev/cu.usbmodem1201', baudrate=115200, timeout=0.1):
         """
         Connect to URG device
         port      : Port or device name. ex:/dev/ttyACM0, COM1, etc...
