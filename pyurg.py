@@ -33,6 +33,13 @@ import sys
 class UrgDevice(serial.Serial):
     def __init__(self):
         super().__init__()
+        # Initialize with default parameters
+        self.pp_params = {}
+        self.pp_params["ARES"] = "1024" 
+        self.pp_params["AFRT"] = "512" 
+        self.pp_params["AMIN"] = "44"
+        self.pp_params["AMAX"] = "725"
+        self.pp_params["SCAN"] = "10"  # Default scan rate
 
     def __del__(self):
         self.laser_off()
@@ -47,6 +54,7 @@ class UrgDevice(serial.Serial):
         self.port = port
         self.baudrate = baudrate
         self.timeout = timeout
+
         try:
             self.open()
         except Exception:
